@@ -1,1 +1,13 @@
-# ForcaOtimizada
+# Forca Otimizada
+
+Esse código cria um jogador de forca através dos conceitos de frequência de palavras e árvore de escolha.
+
+Quando pensamos em criar um jogador automatizado de jogo de forca, a maior questão é em como basear os critérios de escolha desse jogador para chutar letras e palavras. Nesse programa, houveram dois casos:
+
+1. Chutando letras: sempre que o jogador iria chutar uma letra, ele recebia uma lista com letras já chutadas e um dicionário com várias palavras. Percorrendo cada palavra desse dicionário, ele checava se ela contia alguma letra já chutada, e se esse não fosse o caso, a letra era contabilizada e adicionada num dicionário com as frequências em que essas letras apareciam nas palavras. Posteriormente, essas frequências foram transformadas em probabilidades.
+
+2. Chutando palavras: para chutar uma palavra, era recebida uma lista com letras já chutadas, um dicionário com várias palavras e a palavra misteriosa, até aquele momento. Palavras do dicionário que não tinham o mesmo tamanho da palavra misteriosa eram eliminadas, as probabilidades das letras eram calculadas novamente, e as palavras restantes ordenadas, em ordem de maior probabilidade de letras. Por fim, as palavras com letras em posições diferentes das letras fornecidas na palavra misteriosa eram eliminadas, e a palavra restante com maior probabilidade de ser a certa era chutada. 
+
+Ambos os casos se relacionam com as ideias de árvore de decisão e probabilidade. Para fazer funções que conseguissem chutar com maior precisão, eram calculadas as probabilidades de cada letra aparecer, e também feitas várias decisões que definiam qual caminho o algoritmo deveria percorrer. A parte de calcular probabilidades dentro de strings foi vista no sétimo módulo do curso, como parte integrante do algoritmo de Huffman, que conseguia comprimir strings. A árvore de decisão foi vista no sexto módulo, como forma de treinamento de agentes, para que pudessem tomar escolhas cada vez mais eficazes. Unindo esses dois conceitos, foi possível criar um algoritmo simples e com bom funcionamento - da última vez que foi executado, acertou 82 de 100 iterações.
+
+Os erros, por fim, se referem à palavras muito parecidas, que por mais que a palavra escolhida tivesse uma probabilidade maior de acerto que outras, não era necessariamente a correta. Como não há um critério na escolha de palavras pelo programa de jogo de forca, é algo natural de se acontecer, uma vez que o agente não tem conhecimento desse critério de escolha e precisa se basear só nas letras já escolhidas e palavras similares.
